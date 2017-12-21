@@ -1,6 +1,5 @@
+__pycache__/
 *.pyc
 *.pyo
 .idea/*
 questa/secret_settings.py
-questa/__pycache__/*
-questa/board/__pycache__/*
