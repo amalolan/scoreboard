@@ -1,1 +1,3 @@
 .idea/*
+questa/secret_settings.py
+questa/__pycache__/*
