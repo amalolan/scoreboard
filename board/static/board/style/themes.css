@@ -1,0 +1,318 @@
+/* Light-Brown Theme */
+
+body.light-brown {
+  background-color: #d6cfbf;
+  color: #5d6257;
+}
+
+.light-brown h1 {
+  color: #ad4311;
+}
+
+.light-brown h2 {
+  color: #fb667a;
+}
+
+.light-brown h2 a {
+  color: #fb667a;
+}
+
+.light-brown .containerTable th {
+  /* background-color: #1f2739; */
+  color: #763e25;
+  background-color: #d6cfbf;
+}
+
+.light-brown .containerTable td {
+  -moz-box-shadow: 0 2px 2px -2px #86847d;
+  -webkit-box-shadow: 0 2px 2px -2px #86847d;
+  box-shadow: 0 2px 2px -2px #86847d;
+}
+
+.light-brown .containerTable tr {
+  background-color: #c5bcaa;
+}
+
+.light-brown .containerTable tr.round {
+  background-color: #cbc3b3;
+}
+
+.light-brown .containerTable tr.sum {
+  background-color: #bfb59d;
+}
+
+.light-brown .containerTable td:first-child {
+  color: #c39840;
+  font-weight: bold;
+}
+
+.light-brown .containerTable tbody > tr.round:hover {
+  -moz-box-shadow: 0 6px 6px -6px #cfcabc;
+  -webkit-box-shadow: 0 6px 6px -6px #cfcabc;
+  background-color: #b3b0a8;
+  box-shadow: 0 6px 6px -6px #cfcabc;
+}
+
+.light-brown .containerTable .positive {
+  color: #27a05e;
+}
+
+.light-brown .containerTable .negative {
+  color: #d86c6c;
+}
+
+.light-brown .notify.fg {
+  background-color: #cac0ac;
+}
+
+.light-brown .gain {
+  background-color: #27a05e;
+}
+
+.light-brown .gain p {
+  background: #27a05e;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light-brown .loss {
+  background-color: #d86c6c;
+}
+
+.light-brown .loss p {
+  background: #d86c6c;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light-brown .winner {
+  background-color: #1c546e;
+}
+
+.light-brown .winner p {
+  background: #1c546e;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Light-Blue Theme */
+
+body.light-blue {
+  background-color: #cdd5e5;
+  color: #7c7a86;
+}
+
+.light-blue h1 {
+  color: #136ea0;
+}
+
+.light-blue h2 {
+  color: #fb667a;
+}
+
+.light-blue h2 a {
+  color: #fb667a;
+}
+
+.light-blue .containerTable th {
+  color: #1c546e;
+  background-color: #cdd5e5;
+}
+
+.light-blue .containerTable td {
+  -moz-box-shadow: 0 2px 2px -2px #ced3e0;
+  -webkit-box-shadow: 0 2px 2px -2px #ced3e0;
+  box-shadow: 0 2px 2px -2px #ced3e0;
+}
+
+.light-blue .containerTable tr {
+  background-color: #b9c2d4;
+}
+
+.light-blue .containerTable tr.round {
+  background-color: #c2c9d9;
+}
+
+.light-blue .containerTable tr.sum {
+  background-color: #b1bbd3;
+}
+
+.light-blue .containerTable td:first-child {
+  color: #dd7e90;
+  font-weight: bold;
+}
+
+.light-blue .containerTable tbody > tr.round:hover {
+  -moz-box-shadow: 0 6px 6px -6px #c9cfdd;
+  -webkit-box-shadow: 0 6px 6px -6px #c9cfdd;
+  background-color: #b2b5bc;
+  box-shadow: 0 6px 6px -6px #c9cfdd;
+}
+
+.light-blue .containerTable .positive {
+  color: #136732;
+}
+
+.light-blue .containerTable .negative {
+  color: #e65555;
+}
+
+.light-blue .notify.fg {
+  background-color: #bcc6da;
+}
+
+.light-blue .gain {
+  background-color: #136732;
+}
+
+.light-blue .gain p {
+  background: #136732;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light-blue .loss {
+  background-color: #e65555;
+}
+
+.light-blue .loss p {
+  background: #e65555;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light-blue .winner {
+  background-color: #1c546e;
+}
+
+.light-blue .winner p {
+  background: #1c546e;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Bolder and Bigger */
+
+body.big-bold {
+  font-weight: 700;
+}
+
+.big-bold .containerTable {
+  width: 90%;
+}
+
+.big-bold h1 {
+  font-weight: 400;
+}
+
+.big-bold .containerTable th {
+  font-weight: 900;
+}
+
+.big-bold .containerTable .sum td {
+  font-weight: 800;
+}
+
+.big-bold .notify p {
+  font-weight: 800;
+}
+
+.big-bold .containerTable td:first-child {
+  font-weight: 900;
+}
+
+/* Placeholder Theme */
+
+body.place-holder {
+  background-color: #81abea;
+  color: #000;
+}
+
+.place-holder h1 {
+  color: #000;
+}
+
+.place-holder h2 {
+  color: #fb667a;
+}
+
+.place-holder h2 a {
+  color: #fb667a;
+}
+
+.place-holder .containerTable th {
+  /* background-color: #1f2739; */
+  color: #000;
+  background-color: #e8f6f9;
+}
+
+.place-holder.containerTable td {
+  -moz-box-shadow: 0 2px 2px -2px #86847d;
+  -webkit-box-shadow: 0 2px 2px -2px #86847d;
+  box-shadow: 0 2px 2px -2px #86847d;
+}
+
+.place-holder .containerTable tr {
+  background-color: #beeef9;
+}
+
+.place-holder .containerTable tr.round {
+  background-color: #a9ecf9;
+}
+
+.place-holder .containerTable tr.sum {
+  background-color: #a7d7db;
+}
+
+.place-holder .containerTable td:first-child {
+  color: #000;
+}
+
+.place-holder .containerTable tbody > tr.round:hover {
+  -moz-box-shadow: 0 6px 6px -6px #000;
+  -webkit-box-shadow: 0 6px 6px -6px #000;
+  background-color: #000;
+  box-shadow: 0 6px 6px -6px #000;
+}
+
+.place-holder .containerTable .positive {
+  color: #6cd89d;
+}
+
+.place-holder .containerTable .negative {
+  color: #d86c6c;
+}
+
+.place-holder .notify.fg {
+  background-color: #2d384e;
+}
+
+.place-holder .gain {
+  background-color: #136732;
+}
+
+.place-holder .gain p {
+  background: #136732;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.place-holder .loss {
+  background-color: #ec9497;
+}
+
+.place-holder .loss p {
+  background: #ec9497;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.place-holder .winner {
+  background-color: #1c546e;
+}
+
+.place-holder .winner p {
+  background: #1c546e;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

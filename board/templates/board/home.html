@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- The Home Page for the Board app. Contains links to all views and managers
+of all boards in the database as well as  a link to create a new board-->
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>Board app's Home Page</title>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <script src="{% static 'board/js/jquery.min.js' %}"></script>
+  <style>
+    a {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h3>Welcome to the Board App's Home Page.</h3>
+  </div>
+
+  <div>
+    <p>
+      Here are the boards currently present on the database:
+    </p>
+    <ul>
+      {% for board in board_objects %}
+        <li>
+          <a href="{% url 'board:scoreboard' board.id %}">
+            View Board {{ board.id }}: {{ board.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div>
+    <p>
+      If you want to manage them, choose from here:
+    </p>
+    <ul>
+      {% for board in board_objects %}
+        <li>
+          <a href="{% url 'board:manager' board.id %}">
+            Manage Board {{ board.id }}: {{ board.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div>
+    <p>
+      <a href="{% url 'board:create' %}">
+        Alternatively, you can create a new board here.
+      </a>
+    </p>
+  </div>
+
+  <div>
+    If you want to delete all the boards, click
+    <button class="del">here</button>
+    <form id="confirm" style="display: none;"
+          action="{% url 'board:delete' 0 %}" method="post">
+      {% csrf_token %}
+      <br>
+      Are you sure? Once deleted they will be lost permanently.
+      <input type="submit" id="confirmDel" value="Confirm">
+      <button class="del" style="display: none;" type="button">Cancel</button>
+    </form>
+  </div>
+
+</body>
+<script>
+  $('.del').click(function () {
+    $('.del').toggle();
+    $('#confirm').toggle();
+  })
+</script>
+</html>

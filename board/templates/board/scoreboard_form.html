@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>Create A New Board -- Board Manager</title>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <script src="{% static 'board/js/jquery.min.js' %}"></script>
+  <style>
+    .errorlist {
+      color: red;
+      font-weight: bold;
+    }
+    .errorlist li {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Create a New Board: </h1>
+  </div>
+
+  <div>
+    <form action="{% url 'board:create' %}" method="post">
+      {% csrf_token %}
+      <div id="formStart">
+        {% for field in form %}
+          <span>{{ field.errors }}</span>
+          <label>{{ field.label_tag }}</label>
+          {{ field }}
+        {% endfor %}
+        <button type="button" onclick="toggleForm()">Next</button>
+      </div>
+      <div id="formFinish" style="display: none;">
+        Enter the team names: <br> <br>
+
+      </div>
+    </form>
+  </div>
+</body>
+<script>
+  function toggleForm() {
+    document.getElementById('formStart').style.display = 'none';
+    document.getElementById('formFinish').style.display = 'block';
+    addHeadings();
+  }
+
+  function addHeadings() {
+    let teams = parseInt($('#id_num_teams').val());
+    let finish = '#formFinish';
+    for (let j = 0; j < teams; j++) {
+      let i = j + 1;
+      let str = '<label for="team' + i + '">Team ' + i + ' </label>';
+      str += '<input type="text" id="team' + i + '" name="team' + i +
+          '" required><br><br>';
+      $(finish).append(str);
+    }
+    $(finish).append('<input type="submit" value="Create Scoreboard">');
+  }
+</script>
+</html>

@@ -1,0 +1,178 @@
+body {
+  font-size: 13px;
+}
+
+h1 {
+  margin-top: 0.5em;
+  font-size: 2.5em;
+  margin-bottom: 0.75em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+  font-weight: lighter;
+  color: #dc5d6d;
+}
+
+h4 {
+  font-size: 1.25em;
+  font-weight: lighter;
+  color: #eaa4ad;
+}
+
+button, input {
+  min-width: 50px;
+  min-height: 20px;
+  font-size: 0.8em;
+  background-color: #2c3446;
+  border: 0;
+  color: inherit;
+  margin-bottom: 0.4em;
+  cursor: inherit;
+}
+
+input[type=checkbox] {
+  float: left;
+  vertical-align: middle;
+  min-width: 20px;
+  min-height: 20px;
+  margin: 0.3em 0 0 0.4em;
+  opacity: .2;
+}
+
+input[type=text], input[type=number] {
+  margin-left: 0.6em;
+  padding-left: 0.4em;
+  font-size: 1em;
+}
+
+#input-form input[type=submit] {
+  margin: 0.6em 0 0 0.4em;
+}
+
+label {
+  margin: 0.3em 0 0.3em 0.4em;
+}
+
+.manager-content {
+  margin-bottom: 100px;
+}
+
+.containerTable {
+  width: 100%;
+  font-size: 1.2em;
+  line-height: 2em;
+  margin-bottom: 2em;
+  cursor: hand !important;
+  cursor: pointer !important;
+}
+
+.containerTable {
+  border-collapse: collapse;
+}
+
+.containerTable th {
+  font-size: 0.7em;
+  font-weight: normal;
+  padding: 1%;
+  table-layout: fixed;
+  overflow: hidden;
+}
+
+.containerTable td {
+  font-size: 0.9em;
+  padding: 1%;
+}
+
+.containerTable td.name {
+  font-size: 0.8em;
+}
+
+.non-history-box {
+  border-right: 1px #53617b solid;
+}
+
+.note {
+  font-size: 0.9em;
+  font-weight: lighter;
+}
+
+.table {
+  font-family: "Open Sans", sans-serif;
+  color: #a7a1ae;
+}
+
+.table.table-sm.table-dark .points {
+  background-color: #2c3446;
+}
+
+.table.table-sm.table-dark .question {
+  background-color: #323c50;
+}
+
+.table.table-sm.table-dark thead th {
+  color: #8ecdea;
+}
+
+.table-actions form {
+  display: inline-block;
+}
+
+#msg-box {
+  margin-top: 0.8em;
+  background-color: #2d384e;
+  min-height: 100px;
+  padding: 0;
+}
+
+#msg-box .error {
+  color: #ea2a2a;
+}
+
+#msg-box .success {
+  color: #6cd89d;
+}
+
+#msg-status {
+  background-color: #0e1119;
+  padding: 0.2em 0.1em 0.2em 0.1em;
+  margin: 0;
+  font-weight: 700;
+}
+
+#msg {
+  padding: 0.3em 0.5em 0.3em 0.5em;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #39445f;
+  width: 100%;
+  font-size: 1em;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding: 0.5em 0 0.5em 0.5em;
+  max-height: 45px;
+}
+
+.footer button, .footer input {
+  margin: 0;
+  width: auto;
+  padding: 0.5em;
+  font-size: inherit;
+}
+
+.footer form {
+  margin: 0;
+  font-weight: bold;
+}
+
+

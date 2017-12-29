@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!-- The scoreboard front end. This is what will be projected onto the big
+screen.
+HOW IT WORKS: It polls the server for any changes made by the manager page. If
+any changes are discovered, it gets the new board instance and changes the values
+to the new ones and displays animations if required.-->
+
+<!--
+NOTE:
+Any th has id in the format: team[team_number], except #rounds
+  #rounds is the 'Rounds' th
+  #team1 is the first team's th
+Any tr has id in the format: [round_number],[question_number]
+  Round 3's total Questions sum's id is: 3,0
+  Round 2's Question 2's row id is: 2,2
+  #0,0 is the sum_row
+Any td has id in the format: [round_number],[question_number],[team_number]
+So the first td has id = #0,0,0
+Round 3's total Questions sum's team 2 has id = #3,0,2
+Round 5, question 3's team 4 has id = # 5,3,4
+'Question 5' in round 2 has id = #2,5,0
+-->
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Set's the viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Latest compiled and minified bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <!-- Fonts for this page
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800|Raleway:300,400,700,800,900"> -->
+  <link rel="stylesheet" href="{% static 'board/style/fonts.css' %}">
+  <!-- Custom stylesheet for this page -->
+  <link rel="stylesheet" href="{% static 'board/style/main.css' %}">
+  <!-- Themes for this page -->
+  <link rel="stylesheet" href="{% static 'board/style/themes.css' %}">
+  <!-- jQuery library
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <script src="{% static 'board/js/jquery.min.js' %}"></script>
+  <title>Questa Scoreboard</title>
+</head>
+
+<body class="{{ scoreboard.theme }}">
+  <!-- All of the content including footer -->
+  <div class="container-fluid whole">
+
+    <!-- Content -->
+    <div class="content">
+
+      <!-- Header -->
+      <div>
+        <div class="row">
+          <div class="col-md-12">
+            <br>
+          </div>
+        </div>
+        <div class="header row">
+          <div class="col-md-12">
+            <h1 id="title">{{ scoreboard.title }}</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <br>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          {% include 'board/scoretable.html' %}
+        </div>
+      </div>
+
+      <!-- Notifications box -->
+      <div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="notify zero" id="notify-bg-box">
+              <!-- <p id="notify-text"></p> will be placed here -->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="temp-text-holder">
+              <div id="temp-text" class="notify temp-text"></div>
+            </div>
+            <div class="notify fg zero" id="notify-fg-box">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- All animations -->
+  <script src="{% static 'board/js/animations.js' %}"></script>
+  <!-- Number increment animations -->
+  <script src="{% static 'board/js/jquery.color.min.js' %}"></script>
+  <script src="{% static 'board/js/jquery.animateNumber.min.js' %}"></script>
+  <!-- Dealing with get_requests from server. -->
+  <script src="{% static 'board/js/main.js' %}"></script>
+</body>
+<script>
+  let animating = false, finished = false;
+
+  $(document).ready(function () {
+    $('.round').click();
+    setTimeout(function () {
+      $('.content').show();
+    }, 200);
+    poll();
+  });
+
+  function poll() {
+    setTimeout(function () {
+      if (!animating && !finished) {
+        $.ajax({
+          url: "{% url 'board:get_changes' scoreboard.id %}",
+          type: "GET",
+          success: function (data) {
+            if ((!($.isEmptyObject(data))) && (!($.isEmptyObject(data.actions))))
+              receiver(data);
+          },
+          datatype: "json",
+          complete: poll,
+          timeout: 4000
+        })
+      } else if (!finished) poll();
+    }, 4000);
+  }
+</script>
+</html>

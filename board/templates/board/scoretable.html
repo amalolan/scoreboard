@@ -1,0 +1,45 @@
+<!-- Table -->
+<table class="containerTable" id="table">
+  <thead>
+  <tr>
+    <th id="rounds">Rounds</th>
+    {% for i in scoreboard.teams %}
+      <th id="team{{ forloop.counter }}">{{ i }}</th>
+    {% endfor %}
+  </tr>
+  </thead>
+
+  <tbody>
+  {% for round in board %}
+    {% for question in round %}
+      {% if forloop.counter0 == 0 %}
+        <tr class="round"
+      {% else %}
+        <tr class="question"
+      {% endif %}
+      id="{{ forloop.parentloop.counter }},{{ forloop.counter0 }}">
+      {% for cell in question %}
+        {% if forloop.counter0 == 0 %}
+          <td class="name"
+        {% else %}
+          <td
+        {% endif %}
+        id="{{ forloop.parentloop.parentloop.counter }},{{ forloop.parentloop.counter0 }},{{ forloop.counter0 }}">
+        {{ cell }}
+        </td>
+      {% endfor %}
+      </tr>
+    {% endfor %}
+  {% endfor %}
+  <tr class="round sum" id="0,0">
+    {% for cell in sum_row %}
+      {% if forloop.counter0 == 0 %}
+        <td class="name"
+      {% else %}
+        <td
+      {% endif %}
+      id="0,0,{{ forloop.counter0 }}">{{ cell }}</td>
+    {% endfor %}
+  </tr>
+  </tbody>
+</table>

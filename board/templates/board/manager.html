@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!-- The manager for each board. All new questions, rounds, etc. are added
+ through this-->
+<!-- TODO: Finish manager.html-->
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <!-- Latest compiled and minified bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <!-- Fonts for this page
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800|Raleway:300,400,700,800,900"> -->
+  <link rel="stylesheet" href="{% static 'board/style/fonts.css' %}">
+  <!-- Custom stylesheet for scoreboard page -->
+  <link rel="stylesheet" href="{% static 'board/style/main.css' %}">
+  <!-- Custom stylesheet for this page -->
+  <link rel="stylesheet" href="{% static 'board/style/manager.css' %}">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <script src="{% static 'board/js/jquery.min.js' %}"></script>
+  <title>Manager for Board ID: {{ scoreboard.id }}</title>
+</head>
+<body>
+  <div class="container-fluid" style="display:none;">
+
+    <!-- Title -->
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Manager - {{ scoreboard.id }}: {{ scoreboard.title }}</h1>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="row manager-content">
+
+      <!-- Content other than history and msg box -->
+      <div class="col-md-8 non-history-box">
+        <!-- Table and Instructions -->
+        <div class="row">
+          <!-- Table -->
+          <div class="col-md-7">
+            {% include 'board/scoretable.html' %}
+          </div>
+          <!-- Instructions -->
+          <div class="col-md-5">
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Instructions</h3>
+                <p>
+                  To perform any action, first click on the action you want to perform.
+                  Then, click on the table. Type in whatever else is asked, in the input box.
+                  Once you have double checked, hit Submit.
+                </p>
+                <p>
+                  If you want to add/subtract points to a team, click on the cell corresponding to the current round
+                  and the team.
+                </p>
+                <p>
+                  If you want to add a question, click on any cell in the round except the first cell.
+                  To save all your previous changes to points as a single question, just press the button.
+                </p>
+                <p>
+                  And finally, for changing the heading sizes or for win/loss animations,
+                  click on the required team's name.
+                </p>
+                <p class="note">
+                  NOTE: If you change the points there won't be any actual changes to the database, just visual changes.
+                  To make actual changes, click Save points changes. Make sure these points changes were done in the
+                  same round.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Style changes -->
+        <div class="row">
+          <!-- Theme selection -->
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-3">
+                <h4>Themes:</h4>
+              </div>
+              <div class="col-md-9">
+                <!-- Any one of the inputs can be clicked on. The name of the
+                clicked input is stored in the .choice hidden input which is
+                appended at document.load -->
+                <form class="choose static" method="post" name="set_theme"
+                      action="{% url 'board:set_theme' scoreboard.id %}">
+                  {% csrf_token %}
+                  <input type="submit" name="default" value="Default">
+                  <input type="submit" name="light-blue" value="Light-blue">
+                  <input type="submit" name="light-brown" value="Light-brown">
+                  <input type="submit" name="big-bold" value="Toggle Bold">
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Fix overflow -->
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-4">
+                <h4>Heading overflow:</h4>
+              </div>
+              <div class="col-md-8">
+                <!-- A team from the table is clicked on. Once submitted, that
+                team's ID is stored in the .choice hidden input-->
+                <form class="table-choose static" method="post" name="fix_overflow"
+                      action="{% url 'board:fix_overflow' scoreboard.id %}">
+                  {% csrf_token %}
+                  <label>Choose a team and then:</label>
+                  <input type="submit" name="fix_overflow" value="Submit">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <!-- Actions and Animations -->
+        <div class="row">
+          <!-- The .action and .animations buttons open up their respective
+          input boxes -->
+          <!-- Actions -->
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-3">
+                <h4>Actions:</h4>
+              </div>
+              <div class="col-md-9">
+                <!-- If save+points is clicked, this form is submitted.
+                 save_points saves all the previous points changes as a question
+                 in the rounds the points were changed in. If they are from
+                 different rounds, it doesn't save any. -->
+                <form class="static no-choice" method="post" name="save_points"
+                      action="{% url 'board:save_pcs' scoreboard.id %}">
+                  {% csrf_token %}
+                  <button id="points_change" class="action" type="button">Change Points</button>
+                  <button id="save_points">Save points Changes</button>
+                  <button id="add_question" class="action" type="button">Add question</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Animations -->
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-3">
+                <h4>Animations:</h4>
+              </div>
+              <div class="col-md-9">
+                <!-- Once win_animation is clicked, and confirmed, the server
+                declares the team with most points as the winner. -->
+                <form class="static no-choice" method="post" name="win_animation"
+                      action="{% url 'board:win_animation' scoreboard.id %}">
+                  {% csrf_token %}
+                  <button id="gain_animation" class="animation" type="button">Gain</button>
+                  <button id="loss_animation" class="animation" type="button">Loss</button>
+                  <button id="points_change_animation" class="animation" type="button">Points change</button>
+                  <button id="win_animation" type="button" class="confirm">Win</button>
+                  <button class="confirm" type="button" style="display: none;">Cancel</button>
+                  <button class="confirm" type="submit" style="display: none;">Confirm Win</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Inputs -->
+        <div id="input-div">
+          <br>
+          <form class="table-choose row" id="input-form" method="post">
+            {% csrf_token %}
+            <div class="col-md-1"><h4 class="on_make"> Inputs: </h4></div>
+            <div class="col-md-11 free">
+              <input type="submit" class="on_make">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- History And Msg Box-->
+      <div class="col-md-4 history-box">
+
+        <!-- History -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <h2>Actions History</h2>
+              </div>
+            </div>
+            <!-- Table -->
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-sm table-dark">
+                  <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Round Num</th>
+                    <th scope="col">Scores</th>
+                    <th scope="col">Team/Q Num</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for i,j in history %}
+                    <tr class="{{ i }}">
+                      {% for k in j %}
+                        <td>{{ k }}</td>
+                      {% endfor %}
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Table actions -->
+            <div class="row table-actions">
+              <div class="col-md-12">
+                <form class="static no-choice" method="post" name="undo"
+                      action="{% url 'board:undo' scoreboard.id %}">
+                  {% csrf_token %}
+                  <button id="undo" type="button" class="confirm">Undo</button>
+                  <button class="confirm" type="button" style="display: none;">Cancel</button>
+                  <button class="confirm" type="submit" style="display: none;">Confirm Undo</button>
+                </form>
+                <form class="static no-choice" method="post" name="recalculate"
+                      action="{% url 'board:recalculate' scoreboard.id %}">
+                  {% csrf_token %}
+                  <button>Recalculate</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message Box -->
+        <div class="row">
+          <div class="col-md-12">
+            <div id="msg-box">
+              <h2 id="msg-status">Message Box</h2>
+              <p id="msg">
+                Actions' results will be displayed here . If an action failed,
+                the error message will be displayed.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <!-- Delete Board button -->
+        <button class="confirm">Delete Board</button>
+        <form class="refresh confirm" style="display: none;"
+              action="{% url 'board:delete' scoreboard.id %}" method="post">
+          {% csrf_token %}
+          Are you sure? Once deleted the board will be lost permanently.
+          <button type="button">Cancel</button>
+          <input type="submit" value="Confirm">
+        </form>
+        <div class="right"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- All animations and helper functions -->
+  <script src="{% static 'board/js/manager.js' %}"></script>
+  <!-- All Query classes -->
+  <script src="{% static 'board/js/queries.js' %}"></script>
+  <script>
+    // Global variables
+    let urls = {
+      'gain_animation': "{% url 'board:gain_loss_animation' scoreboard.id %}",
+      'loss_animation': "{% url 'board:gain_loss_animation' scoreboard.id %}",
+      'points_change_animation': "{% url 'board:points_change' scoreboard.id %}",
+      'points_change': "{% url 'board:points_change' scoreboard.id %}",
+      'add_question': "{% url 'board:question' scoreboard.id %}"
+    }, chosen = '', queries = {};
+
+    // On ready, these functions modify the DOM.
+    $(document).ready(function () {
+
+      $('.round > .name').click();
+      $('.on_make').hide();
+
+      setTimeout(function () {
+        $('.container-fluid').show();
+      }, 100);
+
+      $('form:not(.no-choice)').append('<input type="hidden" name="choice" class="choice" value="">');
+
+      $('form.static').each(function (i, form) {
+        let name = $(form).not('.refresh').attr('name'), Class = SimpleQuery;
+        if (name === 'fix_overflow') Class = ClickQuery;
+        else if (name === 'set_theme') Class = Query;
+        queries[name] = new Class($(form).attr('action'), form, name);
+      });
+    });
+  </script>
+</body>
+</html>

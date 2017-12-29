@@ -1,0 +1,305 @@
+html {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #1f2739;
+  color: #a7a1ae;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  line-height: 1.42em;
+}
+
+h1 {
+  margin: auto;
+  color: #4dc3fa;
+  font-size: 3.5em;
+  font-weight: inherit;
+  line-height: 1em;
+}
+
+h2 {
+  display: block;
+  padding-bottom: 2em;
+  color: #fb667a;
+  font-size: 1em;
+  font-weight: inherit;
+  line-height: 1em;
+  text-align: center;
+}
+
+h2 a {
+  color: #fb667a;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.blue {
+  color: #4dc3fa;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.whole {
+  margin: auto;
+  margin-left: 20px;
+}
+
+.content {
+  display: none;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.center-align {
+  font-size: 0;
+  letter-spacing: -4px;
+  text-align: center;
+}
+
+.center-align [class*="col-"] {
+  display: inline-block;
+  float: none;
+  font-size: 14px;
+  letter-spacing: 0;
+  vertical-align: top;
+}
+
+.row-no-padding {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.row-no-padding [class*="col-"] {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.row:last-child {
+  bottom: 0;
+}
+
+/* TABLES */
+
+.containerTable th {
+  color: #8ecdea;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: left;
+}
+
+.containerTable td {
+  -moz-box-shadow: 0 2px 2px -2px #0e1119;
+  -webkit-box-shadow: 0 2px 2px -2px #0e1119;
+  font-size: 1em;
+  font-weight: inherit;
+  box-shadow: 0 2px 2px -2px #0e1119;
+}
+
+.containerTable .xl {
+  padding-left: 1px;
+  font-size: 0.9em;
+}
+
+.containerTable .sum td {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.containerTable {
+  display: table;
+  width: 80%;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
+  text-align: left;
+  table-layout: fixed;
+}
+
+.containerTable td,
+.containerTable th {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 2%;
+}
+
+/* Background-color of the question rows */
+
+.containerTable tr {
+  background-color: #323c50;
+}
+
+/* Background-color of the round head-rows */
+
+.containerTable tr.round {
+  background-color: #2c3446;
+}
+
+/* Background-color of the round head-rows */
+
+.containerTable tr.sum {
+  background-color: #39445f;
+}
+
+/* Background-color of the heading */
+
+.containerTable th {
+  background-color: #1f2739;
+}
+
+.containerTable td:first-child {
+  color: #fb667a;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.95em;
+}
+
+.containerTable tbody > tr.round:hover {
+  -moz-box-shadow: 0 6px 6px -6px #0e1119;
+  -webkit-box-shadow: 0 6px 6px -6px #0e1119;
+  background-color: #464a52;
+  box-shadow: 0 6px 6px -6px #0e1119;
+}
+
+/* If the score in that round is positive, it turns green, and if negative turns red */
+
+.containerTable .positive {
+  color: #6cd89d;
+}
+
+.containerTable .negative {
+  color: #ea2a2a;
+}
+
+/* Increment Number Classes */
+span.extra {
+  margin-left: 2em;
+  text-align: center;
+  font-size: 1em;
+}
+
+.containerTable .name {
+  font-size: 1em;
+}
+
+.containerTable td {
+  font-size: 1.1em;
+}
+
+/* Notifications box */
+
+.notify {
+  height: 50px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  margin-left: -50px;
+
+  /*
+  background-color: #8ecdea;
+  */
+  background-color: white;
+  z-index: -1;
+}
+
+.notify.zero {
+  width: 0;
+}
+
+.notify.fg {
+  /*
+  background-color: black;
+  */
+  margin-top: -150px;
+  background-color: #2d384e;
+}
+
+.notify p {
+  background: white;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+
+  /*
+  background: #8ecdea;
+  */
+  display: inline-block;
+  position: relative;
+  padding-left: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.75em;
+  font-weight: inherit;
+  line-height: 50px;
+  z-index: 1;
+}
+
+.temp-text-holder {
+  position: relative;
+  overflow: hidden;
+}
+
+.notify.temp-text {
+  position: absolute;
+  right: -1000px;
+  margin: 0;
+  background: none;
+}
+
+/* Winner Notification */
+
+.winner {
+  background-color: #8ecdea;
+}
+
+.winner p {
+  background: #8ecdea;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2em;
+}
+
+/* Gain Notification */
+
+.gain {
+  background-color: #6cd89d;
+}
+
+.gain p {
+  background: #6cd89d;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Loss Notification */
+
+.loss {
+  background-color: #ea2a2a;
+}
+
+.loss p {
+  background: #ea2a2a;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Media controls */
+
+@media screen and (max-width: 950px) {
+  body {
+    font-size: 0.85em;
+  }
+
+  .containerTable {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  span.extra {
+    margin-left: 1em;
+  }
+}
