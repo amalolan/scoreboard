@@ -2,4 +2,4 @@ __pycache__/
 *.pyc
 *.pyo
 .idea/*
-questa/secret_settings.py
+scoreboard/secret_settings.py
