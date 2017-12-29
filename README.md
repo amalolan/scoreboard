@@ -38,5 +38,5 @@ Alexandr Borisov for [jQuery-animateNumber](https://github.com/aishek/jquery-ani
 licensed under the [MIT license.](https://github.com/aishek/jquery-animateNumber/blob/master/LICENSE)
 
 ## License
-It is a free software, and may be redistributed under the terms specified in the 
+The software is free, and may be redistributed under the terms specified in the 
 [LICENSE file.](https://github.com/amalolan/scoreboard/blob/master/LICENSE)
