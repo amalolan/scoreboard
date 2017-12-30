@@ -3,5 +3,5 @@ __pycache__/
 *.pyo
 .idea/*
 scoreboard/secret_settings.py
-*.ini
+.env
 staticfiles/
