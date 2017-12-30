@@ -8,15 +8,16 @@
   <meta charset="UTF-8">
   <!-- Latest compiled and minified bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  <!-- Fonts for this page
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800|Raleway:300,400,700,800,900"> -->
-  <link rel="stylesheet" href="{% static 'board/style/fonts.css' %}">
+  <!-- Fonts for this page -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Raleway:400,700,800">
+{#  <link rel="stylesheet" href="{% static 'board/style/fonts.css' %}">#}
   <!-- Custom stylesheet for scoreboard page -->
   <link rel="stylesheet" href="{% static 'board/style/main.css' %}">
   <!-- Custom stylesheet for this page -->
   <link rel="stylesheet" href="{% static 'board/style/manager.css' %}">
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-  <script src="{% static 'board/js/jquery.min.js' %}"></script>
+  <!-- jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{#  <script src="{% static 'board/js/jquery.min.js' %}"></script>-->#}
   <title>Manager for Board ID: {{ scoreboard.id }}</title>
 </head>
 <body>
