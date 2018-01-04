@@ -19,16 +19,16 @@ function onClick(obj, animationSpeed) {
         });
     $(self).removeClass("collapsed");
     $(self).nextUntil('tr.round').find('td').animate({
-      'padding-left': '2%',
-      'padding-top': '2%',
-      'padding-bottom': '2%',
+      'padding-left': '0.9em',
+      'padding-top': '0.9em',
+      'padding-bottom': '0.9em',
       'overflow': 'hidden'
     }, {
       duration: animationSpeed,
       queue: false
     });
     $(self).nextUntil('tr.round').find('td:first-child').animate({
-      'padding-left': '5%'
+      'padding-left': '2.5em'
     }, {
       duration: animationSpeed,
       queue: true
