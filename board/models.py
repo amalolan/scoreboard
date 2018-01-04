@@ -123,8 +123,12 @@ class Scoreboard(models.Model):
             cell=coords, gl_animation=gl_animation, scoreboard=self)
         ptc.add_animations()
         coords = [int(i) for i in coords.split(',')]
+        coords2 = "0,0," + str(coords[2])
+        if animation_type != 'null':
+            ptc2 = PointsChangeAction.objects.create(
+                name="points_change", points=points, animation_type=animation_type,
+                cell=coords2, gl_animation=False, scoreboard=self)
         self.change_points([coords], [points])
-        print(coords[0])
         self.history.append({'points': points, 'round_num': coords[0],
                              'team_num': coords[2]})
         return {'points': points, 'team': 'team' + str(coords[2]),
