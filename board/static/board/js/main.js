@@ -6,7 +6,7 @@ let options = {
     'animationSpeed': 1000
   },
   'gl_animation': {
-    'retractAfter': 3000,
+    'retractAfter': 5000,
     'animationSpeed': 1000
   },
   'points_change': {
