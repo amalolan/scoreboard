@@ -28,7 +28,7 @@ function onClick(obj, animationSpeed) {
       queue: false
     });
     $(self).nextUntil('tr.round').find('td:first-child').animate({
-      'padding-left': '2.5em'
+      'padding-left': '2em'
     }, {
       duration: animationSpeed,
       queue: true
