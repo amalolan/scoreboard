@@ -28,6 +28,16 @@ This is a scoreboard web app which can be used for any quiz. It comes with a sel
 
 Handling what is sent to the front-end by the server is probably not the optimal way to do it for a few reasons. Once the GET request is recieved and data is sent over, those queued actions are immediately deleted on the server. This means that two front-end scoreboards cannot simultaneously receive animations for that Quiz instance. A better approach would be to always receive the complete list of actions and decide what to do on the client(front-end) side instead of making those decisions on the server side. This would let more than one client side connection exist at a time, but, on the other hand, would increase the size of the response and would require more complex logic on the client side: the reason I chose to do it server-side.
 
+## Examples
+Here are a few examples of this scoreboard running.
+![](image1.png)
+When a team wins:
+![](image2.png)
+The front-end view:
+![](image3.png)
+The manager view:
+![](image4.png)
+
 ## Credits
 
 Alexandr Borisov for [jQuery-animateNumber](https://github.com/aishek/jquery-animateNumber), licensed under the [MIT license.](https://github.com/aishek/jquery-animateNumber/blob/master/LICENSE)
